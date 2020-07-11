@@ -9,3 +9,8 @@ variable "records" {
     ["www","10.10.10.10","0","A","false"]
   ]
 }
+
+variable "cf_ttl" {
+  type    = string
+  default = "1"
+}
