@@ -24,4 +24,5 @@ resource "cloudflare_record" "this" {
   priority = element(var.records[count.index], 2)
   type     = element(var.records[count.index], 3)
   proxied  = element(var.records[count.index], 4)
+  ttl      = var.cf_ttl
 }
