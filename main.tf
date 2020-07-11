@@ -8,9 +8,17 @@ terraform {
   backend "s3" {}
 }
 
+data "cloudflare_zones" "this" {
+  filter {
+    name   = var.domain_name
+    status = "active"
+    paused = false
+  }
+}
+
 resource "cloudflare_record" "this" {
   count    = length(var.records)
-  domain   = var.domain_name
+  zone_id  = lookup(data.cloudflare_zones.this.zones[0], "id")
   name     = element(var.records[count.index], 0)
   value    = element(var.records[count.index], 1)
   priority = element(var.records[count.index], 2)
