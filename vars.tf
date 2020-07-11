@@ -1,7 +1,8 @@
 variable "cf_email" {}
-variable "cf_token" {}
+variable "cf_api_key" {}
+variable "cf_api_token" { default = "" }
 
-variable "domain_name" { default = "example.com" }
+variable "domain_name" {}
 variable "records" {
   default = [
     ["www","10.10.10.10","0","A","false"]
