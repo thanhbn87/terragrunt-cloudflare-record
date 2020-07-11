@@ -4,6 +4,7 @@ variable "cf_api_token" { default = "" }
 
 variable "domain_name" {}
 variable "records" {
+  type    = list
   default = [
     ["www","10.10.10.10","0","A","false"]
   ]
